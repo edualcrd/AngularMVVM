@@ -1,18 +1,33 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
+import { ProductosService } from './productos/productos.service';
+import { ClientesService } from './clientes/clientes.service';
+import { HttpClientModule } from '@angular/common/http';
+
+// ¡IMPORTACIÓN DE APPCOMPONENT REQUERIDA!
+import { AppComponent } from './app.component'; // <--- AGREGAR ESTA LÍNEA
+
+import { ClientesComponent } from './clientes/clientes.component';
+import { HeaderComponent } from './header/header.component';
+import { ProductosComponent } from './productos/productos.component';
+
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,       // <--- AGREGAR AQUÍ
+    ClientesComponent,
+    HeaderComponent,
+    ProductosComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  providers: [ProductosService, ClientesService],
+  
+  // ¡EL ARRANQUE DE LA APLICACIÓN ES VITAL!
+  bootstrap: [AppComponent] // <--- ¡LA LÍNEA QUE FALTABA!
 })
 export class AppModule { }
