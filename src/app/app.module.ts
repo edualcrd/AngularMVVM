@@ -12,6 +12,7 @@ import { ClientesComponent } from './clientes/clientes.component';
 import { HeaderComponent } from './header/header.component';
 import { ProductosComponent } from './productos/productos.component';
 import { LoginComponent } from './login/login.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 
 @NgModule({
@@ -20,12 +21,14 @@ import { LoginComponent } from './login/login.component';
     ClientesComponent,
     HeaderComponent,
     ProductosComponent,
-    LoginComponent
+    LoginComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [ProductosService, ClientesService],
   

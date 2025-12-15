@@ -1,13 +1,32 @@
 {
   "clientes": [
-    { "id": 1, "nombre": "Juan Pérez", "email": "juan@example.com" },
-    { "id": 2, "nombre": "Maria Lopez", "email": "maria@example.com" }
+    {
+      "id": 1,
+      "nombre": "Juan Pérez",
+      "email": "juan@example.com"
+    },
+    {
+      "id": 2,
+      "nombre": "Maria Lopez",
+      "email": "maria@example.com"
+    }
   ],
   "productos": [
-    { "id": 1, "nombre": "Laptop", "precio": 1000 },
-    { "id": 2, "nombre": "Mouse", "precio": 20 }
+    {
+      "id": 1,
+      "nombre": "Laptop",
+      "precio": 1000
+    },
+    {
+      "id": 2,
+      "nombre": "Mouse",
+      "precio": 20
+    }
   ],
   "carritos": [
-    { "id": 1, "productos": [] }
+    {
+      "id": 1,
+      "productos": []
+    }
   ]
 }

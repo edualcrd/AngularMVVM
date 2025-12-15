@@ -6,8 +6,8 @@ import { AuthService } from '../auth.service';
   templateUrl: './login.component.html'
 })
 export class LoginComponent {
-  user: string = '';
-  pass: string = '';
+  user: string = 'admin';
+  pass: string = '1234';
   error: boolean = false;
 
   constructor(private authService: AuthService) {}

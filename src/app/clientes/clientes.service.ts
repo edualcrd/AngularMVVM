@@ -6,16 +6,22 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class ClientesService {
-
-    private apiUrl = 'http://localhost:3000/';  // URL base de la API
+  private apiUrl = 'http://localhost:3000/'; 
 
   constructor(private http: HttpClient) { }
-  // Método genérico para obtener datos (GET)
-  getData(action: string): Observable<any> {
-  // Usa la apiUrl y concatena la acción (ej: 'clientes', 'usuarios')
-  const url = `${this.apiUrl}${action}`; 
-  return this.http.get<any>(url);
-}
 
+  // Obtener (GET)
+  getData(endpoint: string): Observable<any> {
+    return this.http.get<any>(`${this.apiUrl}${endpoint}`);
+  }
 
+  // Crear (POST)
+  postData(endpoint: string, data: any): Observable<any> {
+    return this.http.post<any>(`${this.apiUrl}${endpoint}`, data);
+  }
+
+  // Eliminar (DELETE)
+  deleteData(endpoint: string, id: number): Observable<any> {
+    return this.http.delete<any>(`${this.apiUrl}${endpoint}/${id}`);
+  }
 }

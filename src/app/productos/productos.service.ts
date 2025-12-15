@@ -6,32 +6,25 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class ProductosService {
-
-  private apiUrl = 'http://localhost:3000/';  // URL base de la API
+  private apiUrl = 'http://localhost:3000/';
 
   constructor(private http: HttpClient) { }
-  // Método genérico para obtener datos (GET)
-  // src/app/productos/productos.service.ts
-  getData(action: string): Observable<any> {
-    const url = `http://localhost:3000/productos/`;  // <--- ERROR: Siempre busca 'productos/'
-    return this.http.get<any>(url);
+
+  getData(endpoint: string): Observable<any> {
+    return this.http.get<any>(`${this.apiUrl}${endpoint}`);
   }
 
-  // Método genérico para enviar datos (POST)
-  postData(action: string, data: any): Observable<any> {
-    const url = `${this.apiUrl}?action=${action}`;  // URL dinámica basada en la acción
-    return this.http.post<any>(url, data);  // Hacer la solicitud POST
+  postData(endpoint: string, data: any): Observable<any> {
+    // CORREGIDO: Ahora usa la URL limpia (ej: localhost:3000/productos)
+    return this.http.post<any>(`${this.apiUrl}${endpoint}`, data);
   }
 
-  // Método genérico para actualizar datos (PUT)
-  putData(action: string, data: any): Observable<any> {
-    const url = `${this.apiUrl}?action=${action}`;  // URL dinámica basada en la acción
-    return this.http.put<any>(url, data);  // Hacer la solicitud PUT
+  putData(endpoint: string, id: number, data: any): Observable<any> {
+    return this.http.put<any>(`${this.apiUrl}${endpoint}/${id}`, data);
   }
 
-  // Método genérico para eliminar datos (DELETE)
-  deleteData(action: string, id: number): Observable<any> {
-    const url = `${this.apiUrl}?action=${action}&id=${id}`;  // URL dinámica con el id
-    return this.http.delete<any>(url);  // Hacer la solicitud DELETE
+  deleteData(endpoint: string, id: number): Observable<any> {
+    // CORREGIDO: Ahora usa slash (ej: localhost:3000/productos/1)
+    return this.http.delete<any>(`${this.apiUrl}${endpoint}/${id}`);
   }
 }
