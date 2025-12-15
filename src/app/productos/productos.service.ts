@@ -7,13 +7,14 @@ import { Observable } from 'rxjs';
 })
 export class ProductosService {
 
-    private apiUrl = 'http://localhost:3000/';  // URL base de la API
+  private apiUrl = 'http://localhost:3000/';  // URL base de la API
 
   constructor(private http: HttpClient) { }
   // Método genérico para obtener datos (GET)
+  // src/app/productos/productos.service.ts
   getData(action: string): Observable<any> {
-    const url = `http://localhost:3000/productos/`;  // URL dinámica basada en la acción
-    return this.http.get<any>(url);  // Hacer la solicitud GET
+    const url = `http://localhost:3000/productos/`;  // <--- ERROR: Siempre busca 'productos/'
+    return this.http.get<any>(url);
   }
 
   // Método genérico para enviar datos (POST)

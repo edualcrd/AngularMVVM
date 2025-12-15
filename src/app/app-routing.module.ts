@@ -1,24 +1,28 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-
-// 1. IMPORTAR COMPONENTES
-import { ProductosComponent } from './productos/productos.component';
+import { LoginComponent } from './login/login.component';
 import { ClientesComponent } from './clientes/clientes.component';
+import { ProductosComponent } from './productos/productos.component';
+import { AuthGuard } from './auth.guard';
 
-
-// 2. DEFINIR LAS RUTAS
 const routes: Routes = [
-  // Redirigir la ruta raíz (/) a /productos por defecto
-  { path: '', redirectTo: '/productos', pathMatch: 'full' },
+  // RUTA PÚBLICA (Login)
+  { path: 'login', component: LoginComponent },
+  { path: '', redirectTo: '/login', pathMatch: 'full' },
 
-  // Ruta para Productos: cuando la URL sea /productos, cargar ProductosComponent
-  { path: 'productos', component: ProductosComponent },
-
-  // Ruta para Clientes: cuando la URL sea /clientes, cargar ClientesComponent
-  { path: 'clientes', component: ClientesComponent },
+  // RUTAS PRIVADAS (Protegidas por AuthGuard)
+  // Agrupamos bajo 'admin' para que parezca un panel real
+  { 
+    path: 'admin', 
+    canActivate: [AuthGuard], // <--- Aquí actúa el Guard
+    children: [
+      { path: 'clientes', component: ClientesComponent },
+      { path: 'productos', component: ProductosComponent },
+    ]
+  },
   
-  // Ruta comodín (opcional): Maneja cualquier otra URL no definida (ej. 404)
-  // { path: '**', component: TuComponente404 }, 
+  // Cualquier ruta desconocida va al login
+  { path: '**', redirectTo: '/login' }
 ];
 
 @NgModule({

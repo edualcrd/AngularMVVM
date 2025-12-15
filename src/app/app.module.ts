@@ -4,13 +4,14 @@ import { AppRoutingModule } from './app-routing.module';
 import { ProductosService } from './productos/productos.service';
 import { ClientesService } from './clientes/clientes.service';
 import { HttpClientModule } from '@angular/common/http';
-
+import { FormsModule } from '@angular/forms';
 // ¡IMPORTACIÓN DE APPCOMPONENT REQUERIDA!
 import { AppComponent } from './app.component'; // <--- AGREGAR ESTA LÍNEA
 
 import { ClientesComponent } from './clientes/clientes.component';
 import { HeaderComponent } from './header/header.component';
 import { ProductosComponent } from './productos/productos.component';
+import { LoginComponent } from './login/login.component';
 
 
 @NgModule({
@@ -18,7 +19,8 @@ import { ProductosComponent } from './productos/productos.component';
     AppComponent,       // <--- AGREGAR AQUÍ
     ClientesComponent,
     HeaderComponent,
-    ProductosComponent
+    ProductosComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,

@@ -12,9 +12,10 @@ export class ClientesService {
   constructor(private http: HttpClient) { }
   // Método genérico para obtener datos (GET)
   getData(action: string): Observable<any> {
-    const url = `http://localhost:3000/carritos/1`;  // URL dinámica basada en la acción
-    return this.http.get<any>(url);  // Hacer la solicitud GET
-  }
+  // Usa la apiUrl y concatena la acción (ej: 'clientes', 'usuarios')
+  const url = `${this.apiUrl}${action}`; 
+  return this.http.get<any>(url);
+}
 
 
 }
